@@ -55,7 +55,7 @@ using Argument = xyz::openbmc_project::Common::InvalidArgument;
 Users::Users(sdbusplus::bus::bus &bus, const char *path,
              std::vector<std::string> groups, std::string priv, bool enabled,
              UserMgr &parent) :
-    UserIfaces(bus, path, true),
+    Interfaces(bus, path, true),
     userName(std::experimental::filesystem::path(path).filename()),
     manager(parent)
 {
