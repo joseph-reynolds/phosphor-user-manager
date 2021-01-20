@@ -15,4 +15,4 @@ case $1 in
 esac
 
 autoreconf -i
-echo 'Run "./configure ${CONFIGURE_FLAGS} && make"'
+echo "Run \"./configure \${CONFIGURE_FLAGS} && make\""
