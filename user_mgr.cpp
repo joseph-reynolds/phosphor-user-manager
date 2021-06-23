@@ -60,16 +60,16 @@ static constexpr int success = 0;
 static constexpr int failure = -1;
 
 // pam modules related
-static constexpr const char *pamFaillock = "pam_faillock.so";
-static constexpr const char *pamPWQuality = "pam_pwquality.so";
-static constexpr const char *pamPWHistory = "pam_pwhistory.so";
-static constexpr const char *minPasswdLenProp = "minlen";
-static constexpr const char *remOldPasswdCount = "remember";
-static constexpr const char *maxFailedAttempt = "deny";
-static constexpr const char *unlockTimeout = "unlock_time";
-static constexpr const char *pamPasswdConfigFile = "/etc/pam.d/common-password";
-static constexpr const char *faillockConfigFile = "/etc/security/faillock.conf";
-static constexpr const char *pwQualityConfigFile =
+static constexpr const char* pamFaillock = "pam_faillock.so";
+static constexpr const char* pamPWQuality = "pam_pwquality.so";
+static constexpr const char* pamPWHistory = "pam_pwhistory.so";
+static constexpr const char* minPasswdLenProp = "minlen";
+static constexpr const char* remOldPasswdCount = "remember";
+static constexpr const char* maxFailedAttempt = "deny";
+static constexpr const char* unlockTimeout = "unlock_time";
+static constexpr const char* pamPasswdConfigFile = "/etc/pam.d/common-password";
+static constexpr const char* faillockConfigFile = "/etc/security/faillock.conf";
+static constexpr const char* pwQualityConfigFile =
     "/etc/security/pwquality.conf";
 
 // Object Manager related
