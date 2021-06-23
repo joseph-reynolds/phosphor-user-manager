@@ -1,8 +1,12 @@
 #include "mock_user_mgr.hpp"
-#include <xyz/openbmc_project/User/Common/error.hpp>
+
+#include <sdbusplus/test/sdbus_mock.hpp>
 #include <xyz/openbmc_project/Common/error.hpp>
-#include <gtest/gtest.h>
+#include <xyz/openbmc_project/User/Common/error.hpp>
+
 #include <exception>
+
+#include <gtest/gtest.h>
 
 namespace phosphor
 {
@@ -17,17 +21,17 @@ using InternalFailure =
 class TestUserMgr : public testing::Test
 {
   public:
+    sdbusplus::SdBusMock sdbusMock;
     sdbusplus::bus::bus bus;
     MockManager mockManager;
 
     TestUserMgr() :
-        bus(sdbusplus::bus::new_default()), mockManager(bus, objpath)
-    {
-    }
+        bus(sdbusplus::get_mocked_new(&sdbusMock)), mockManager(bus, objpath)
+    {}
 
-    void createLocalUser(const std::string &userName,
+    void createLocalUser(const std::string& userName,
                          std::vector<std::string> groupNames,
-                         const std::string &priv, bool enabled)
+                         const std::string& priv, bool enabled)
     {
         std::string userObj = std::string(usersObjPath) + "/" + userName;
         mockManager.usersList.emplace(
@@ -103,6 +107,7 @@ TEST_F(TestUserMgr, localUser)
               std::get<std::vector<std::string>>(userInfo["UserGroups"]));
     EXPECT_EQ(true, std::get<bool>(userInfo["UserEnabled"]));
     EXPECT_EQ(false, std::get<bool>(userInfo["UserLockedForFailedAttempt"]));
+    EXPECT_EQ(false, std::get<bool>(userInfo["UserPasswordExpired"]));
     EXPECT_EQ(false, std::get<bool>(userInfo["RemoteUser"]));
 }
 

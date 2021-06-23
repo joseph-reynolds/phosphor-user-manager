@@ -1,15 +1,17 @@
 #pragma once
 
+#include "config.h"
+
 #include "ldap_config.hpp"
 
-#include "config.h"
+#include <phosphor-logging/elog-errors.hpp>
+#include <phosphor-logging/elog.hpp>
+#include <phosphor-logging/log.hpp>
+#include <sdbusplus/bus.hpp>
+#include <xyz/openbmc_project/Common/error.hpp>
 #include <xyz/openbmc_project/User/Ldap/Config/server.hpp>
 #include <xyz/openbmc_project/User/Ldap/Create/server.hpp>
-#include <xyz/openbmc_project/Common/error.hpp>
-#include <phosphor-logging/log.hpp>
-#include <phosphor-logging/elog.hpp>
-#include <phosphor-logging/elog-errors.hpp>
-#include <sdbusplus/bus.hpp>
+
 #include <string>
 namespace phosphor
 {
@@ -57,18 +59,17 @@ class ConfigMgr : public CreateIface
         CreateIface(bus, path, true),
         dbusPersistentPath(dbusPersistentPath), configFilePath(filePath),
         tlsCacertFile(caCertFile), tlsCertFile(certFile), bus(bus)
-    {
-    }
+    {}
 
     /** @brief concrete implementation of the pure virtual funtion
             xyz.openbmc_project.User.Ldap.Create.createConfig.
-     *  @param[in] lDAPServerURI - LDAP URI of the server.
-     *  @param[in] lDAPBindDN - distinguished name with which bind to bind
+     *  @param[in] ldapServerURI - LDAP URI of the server.
+     *  @param[in] ldapBindDN - distinguished name with which bind to bind
             to the directory server for lookups.
-     *  @param[in] lDAPBaseDN -  distinguished name to use as search base.
-     *  @param[in] lDAPBindDNPassword - credentials with which to bind.
-     *  @param[in] lDAPSearchScope - the search scope.
-     *  @param[in] lDAPType - Specifies the LDAP server type which can be AD
+     *  @param[in] ldapBaseDN -  distinguished name to use as search base.
+     *  @param[in] ldapBindDNPassword - credentials with which to bind.
+     *  @param[in] ldapSearchScope - the search scope.
+     *  @param[in] ldapType - Specifies the LDAP server type which can be AD
             or openLDAP.
      *  @param[in] groupNameAttribute - Specifies attribute name that contains
      *             the name of the Group in the LDAP server.
@@ -76,11 +77,11 @@ class ConfigMgr : public CreateIface
      *             the username in the LDAP server.
      *  @returns the object path of the D-Bus object created.
      */
-    std::string createConfig(std::string lDAPServerURI, std::string lDAPBindDN,
-                             std::string lDAPBaseDN,
-                             std::string lDAPBindDNPassword,
-                             CreateIface::SearchScope lDAPSearchScope,
-                             CreateIface::Type lDAPType,
+    std::string createConfig(std::string ldapServerURI, std::string ldapBindDN,
+                             std::string ldapBaseDN,
+                             std::string ldapBindDNPassword,
+                             CreateIface::SearchScope ldapSearchScope,
+                             CreateIface::Type ldapType,
                              std::string groupNameAttribute,
                              std::string userNameAttribute) override;
 
