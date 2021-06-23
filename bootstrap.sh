@@ -15,4 +15,5 @@ case $1 in
 esac
 
 autoreconf -i
-echo 'Run "./configure ${CONFIGURE_FLAGS} && make"'
+# shellcheck disable=SC2016
+echo "Run \"./configure \${CONFIGURE_FLAGS} && make\""
