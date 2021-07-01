@@ -684,7 +684,6 @@ bool UserMgr::userLockedForFailedAttempt(const std::string& userName)
 {
     // All user management lock has to be based on /etc/shadow
     // TODO  phosphor-user-manager#10 phosphor::user::shadow::Lock lock{};
-    std::vector<std::string> output;
 
     // Emulate the behavior of pam_faillock.so authsucc: get the number of
     // failed attempts and compare with the deny= value
