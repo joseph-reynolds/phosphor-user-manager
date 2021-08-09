@@ -425,8 +425,8 @@ class UserMgr : public Ifaces
     const std::string path;
 
     /** @brief privilege manager container */
-    const std::vector<std::string> privMgr = {"priv-admin", "priv-operator",
-                                              "priv-user"};
+    const std::vector<std::string> privMgr = {
+        "priv-admin", "priv-operator", "priv-user", "priv-oemibmserviceagent"};
 
     /** @brief groups manager container */
     std::vector<std::string> groupsMgr;
