@@ -105,6 +105,7 @@ class LDAPMapperMgr : public MapperMgrIface
         "priv-operator",
         "priv-user",
         "priv-noaccess",
+        "priv-oemibmserviceagent",
     };
 
     /** @brief Id of the last privilege mapper entry */
