@@ -284,7 +284,8 @@ class UserMgr : public Ifaces
     void throwForRestrictedPrivilegeRole(const std::string& priv);
 
     /** @brief check if a user has a RestrictedRole
-     *  method to check if the user's role is restricted, and throw if restricted
+     *  method to check if the user's role is restricted, and throw if
+     *  restricted
      *
      *  @param[in] userName - the name of the user
      */
