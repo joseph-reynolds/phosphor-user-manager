@@ -279,6 +279,13 @@ void UserMgr::throwForInvalidPrivilege(const std::string& priv)
         elog<InvalidArgument>(Argument::ARGUMENT_NAME("Privilege"),
                               Argument::ARGUMENT_VALUE(priv.c_str()));
     }
+
+    if (priv == "priv-noaccess")
+    {
+        log<level::ERR>("The NoAccess privilege is not allowed");
+        elog<InvalidArgument>(Argument::ARGUMENT_NAME("Privilege"),
+                              Argument::ARGUMENT_VALUE(priv.c_str()));
+    }
 }
 
 void UserMgr::throwForInvalidGroups(const std::vector<std::string>& groupNames)
