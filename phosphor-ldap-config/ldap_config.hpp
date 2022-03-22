@@ -274,8 +274,10 @@ class Config : public Ifaces
 
     /** @brief available privileges container */
     std::set<std::string> privMgr = {
-        "priv-admin",    "priv-operator",           "priv-user",
-        "priv-noaccess", "priv-oemibmserviceagent",
+        "priv-admin",
+        "priv-operator",
+        "priv-user",
+        "priv-oemibmserviceagent",
     };
 
     /** @brief React to InterfaceAdded signal
