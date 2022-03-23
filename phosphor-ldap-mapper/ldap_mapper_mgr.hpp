@@ -101,8 +101,10 @@ class LDAPMapperMgr : public MapperMgrIface
 
     /** @brief available privileges container */
     std::set<std::string> privMgr = {
-        "priv-admin",    "priv-operator",           "priv-user",
-        "priv-noaccess", "priv-oemibmserviceagent",
+        "priv-admin",
+        "priv-operator",
+        "priv-user",
+        "priv-oemibmserviceagent",
     };
 
     /** @brief Id of the last privilege mapper entry */
