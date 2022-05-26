@@ -341,7 +341,7 @@ void UserMgr::createUser(std::string userName,
     // In the OpenBMC community project:
     //   A. It allows access to the BMC's SSH interfaces
     //       - SSH port 22 reaches the BMC's command shell.
-    //       - SSH port 2200 reaches the host console.    
+    //       - SSH port 2200 reaches the host console.
     //   B. It is enforced by two mechanisms:
     //       1. The SSH dropbear server command uses the -G priv-admin argument
     //          to restrict SSH access to users who are in the priv-admin Linux
